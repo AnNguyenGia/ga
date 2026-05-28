@@ -19,7 +19,7 @@ interface Social {
 export const SOCIALS: Social[] = [
   {
     name: "GitHub",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://github.com/AnNguyenGia",
     linkTitle: `${SITE.title} on GitHub`,
     icon: IconGitHub,
   },
@@ -37,7 +37,7 @@ export const SOCIALS: Social[] = [
   },
   {
     name: "Mail",
-    href: "mailto:yourmail@gmail.com",
+    href: "nguyeengiaan241106@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
     icon: IconMail,
   },
@@ -52,7 +52,7 @@ export const SHARE_LINKS: Social[] = [
   },
   {
     name: "Facebook",
-    href: "https://www.facebook.com/sharer.php?u=",
+    href: "https://web.facebook.com/an.gia.3745/",
     linkTitle: `Share this post on Facebook`,
     icon: IconFacebook,
   },

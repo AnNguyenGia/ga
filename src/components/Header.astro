@@ -31,20 +31,27 @@ const isActive = (path: string) => {
 </a>
 
 <header
-  class="app-layout flex flex-col items-center justify-between sm:flex-row"
+  class="app-layout mt-4 flex flex-col items-center justify-between sm:flex-row"
 >
   <div
     id="top-nav-wrap"
     class:list={[
-      "py-4 sm:py-6",
-      "border-b border-border",
-      "relative w-full bg-background",
+      "cute-window px-4 py-4 sm:px-6",
+      "relative w-full bg-surface",
       "flex items-baseline justify-between sm:items-center",
     ]}
   >
+    <div
+      class="absolute top-3 left-4 hidden items-center gap-2 sm:flex"
+      aria-hidden="true"
+    >
+      <span class="cute-dot bg-[#ffbe3d]"></span>
+      <span class="cute-dot bg-[#ff8a99]"></span>
+      <span class="cute-dot bg-[#8bdc65]"></span>
+    </div>
     <a
       href="/"
-      class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      class="absolute py-1 text-xl leading-8 font-black whitespace-nowrap text-accent sm:static sm:my-auto sm:ms-24 sm:text-2xl sm:leading-none"
     >
       {SITE.title}
     </a>

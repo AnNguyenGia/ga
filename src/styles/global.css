@@ -5,19 +5,25 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #fff6cf;
+  --foreground: #171717;
+  --accent: #ff8a00;
+  --muted: #ffe7a8;
+  --border: #171717;
+  --surface: #fffdf0;
+  --surface-alt: #b7ea8c;
+  --shadow: #171717;
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
+  --background: #262139;
+  --foreground: #fff9db;
+  --accent: #ffbe3d;
+  --muted: #3c3359;
+  --border: #fff9db;
+  --surface: #30284a;
+  --surface-alt: #7adf8b;
+  --shadow: #0d0b14;
 }
 
 @theme inline {
@@ -27,6 +33,9 @@ html[data-theme="dark"] {
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-shadow: var(--shadow);
 }
 
 @layer base {
@@ -40,6 +49,20 @@ html[data-theme="dark"] {
   }
   body {
     @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
+    background-image:
+      radial-gradient(
+        circle at 18px 18px,
+        color-mix(in srgb, var(--accent) 18%, transparent) 2px,
+        transparent 2.5px
+      ),
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--muted) 44%, transparent),
+        transparent 42%
+      );
+    background-size:
+      34px 34px,
+      100% 100%;
   }
   a,
   button {
@@ -61,6 +84,29 @@ html[data-theme="dark"] {
 
 .active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-8;
+}
+
+.cute-window {
+  @apply border-4 border-border bg-surface shadow-[8px_8px_0_var(--shadow)];
+  border-radius: 22px;
+}
+
+.cute-window-bar {
+  @apply flex items-center gap-2 border-b-4 border-border bg-muted px-4 py-3;
+  border-radius: 18px 18px 0 0;
+}
+
+.cute-dot {
+  @apply size-3 rounded-full border-2 border-border;
+}
+
+.cute-card {
+  @apply border-[3px] border-border bg-surface px-4 py-3 shadow-[5px_5px_0_var(--shadow)] transition-transform duration-150 hover:-translate-y-1;
+  border-radius: 16px;
+}
+
+.cute-pill {
+  @apply inline-flex items-center rounded-lg border-[3px] border-border bg-surface-alt px-3 py-1 font-semibold text-foreground shadow-[3px_3px_0_var(--shadow)];
 }
 
 /* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
