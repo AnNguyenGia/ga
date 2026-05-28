@@ -15,6 +15,8 @@ const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (path: string) => `${basePath}/${path.replace(/^\/+/, "")}`;
 ---
 
 <Layout>
@@ -33,10 +35,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           </h1>
           <span class="cute-pill">CV + ML notes</span>
         </div>
-        
+
         <a
           target="_blank"
-          href="/rss.xml"
+          href={withBase("/rss.xml")}
           class="inline-block"
           aria-label="rss feed"
           title="RSS Feed"
@@ -105,7 +107,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       )
     }
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href={withBase("/posts/")}>
         All Posts
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
@@ -118,7 +120,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     const indexLayout = (document.querySelector("#main-content") as HTMLElement)
       ?.dataset?.layout;
     if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
+      sessionStorage.setItem(
+        "backUrl",
+        `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`
+      );
     }
   });
 </script>
