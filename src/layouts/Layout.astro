@@ -17,12 +17,15 @@ type Props = {
   scrollSmooth?: boolean;
 };
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const withBase = (path: string) => `${basePath}/${path.replace(/^\/+/, "")}`;
+
 const {
   title = SITE.title,
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,
-  ogImage = SITE.ogImage ? `/${SITE.ogImage}` : "/og.png",
+  ogImage = SITE.ogImage ? withBase(SITE.ogImage) : withBase("og.png"),
   canonicalURL = new URL(Astro.url.pathname, Astro.url),
   pubDatetime,
   modDatetime,
@@ -30,8 +33,6 @@ const {
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.url);
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
-const withBase = (path: string) => `${basePath}/${path.replace(/^\/+/, "")}`;
 
 const structuredData = {
   "@context": "https://schema.org",
